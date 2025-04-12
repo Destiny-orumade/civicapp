@@ -22,11 +22,12 @@ interface Official {
 const OfficialInformationPage = () => {
   const { id } = useParams<{ id: string }>(); // Get the ID from the URL
   const [official, setOfficial] = useState<Official | null>(null);
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const fetchOfficial = async () => {
       try {
-        const response = await axios.get(`/api/officials/${id}`);
+        const response = await axios.get(`${baseUrl}/api/officials/${id}`);
         setOfficial(response.data.official); // Assuming the API response has `official` object
         console.log(response.data.official);
       } catch (error) {
