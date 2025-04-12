@@ -50,7 +50,7 @@ const OfficialsPage = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `/api/officials/levels/${
+          `${baseUrl}/api/officials/levels/${
             levels[activeTab.toLowerCase()]
           }?page=1&limit=40`
         );
