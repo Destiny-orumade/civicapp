@@ -7,6 +7,7 @@ import {
   FaBriefcase,
   FaUsers,
 } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const FindYourRep = () => {
   const [state, setState] = useState('')
@@ -93,15 +94,18 @@ const FindYourRep = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="mt-8 bg-green-900 text-white px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-            {quickLinks.map((link) => (
-              <div key={link.label} className="flex flex-col items-center space-y-2">
-                <div className="text-2xl">{link.icon}</div>
-                <span className="text-sm">{link.label}</span>
-              </div>
-            ))}
-          </div>
+        <div className="mt-8 bg-green-900 text-white px-4 py-8">          
+            <Link
+              to="/officials-page">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                {quickLinks.map((link) => (
+                  <div key={link.label} className="flex flex-col items-center space-y-2">
+                    <div className="text-2xl">{link.icon}</div>
+                    <span className="text-sm">{link.label}</span>
+                  </div>
+                ))}
+              </div>  
+            </Link>
         </div>
       </main>
     </div>
