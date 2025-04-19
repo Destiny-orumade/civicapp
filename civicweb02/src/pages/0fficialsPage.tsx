@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import instance from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 // Define the type for an official
@@ -29,7 +29,7 @@ const OfficialsPage = () => {
   useEffect(() => {
     const fetchLevels = async () => {
       try {
-        const res = await instance.get(`${baseURL}/api/levels`);
+        const res = await axios.get("api/levels");
         console.log(res);
         const levelMap: Record<string, string> = {};
         res.data.levels.forEach((lvl: { level: string; _id: string }) => {
@@ -51,8 +51,8 @@ const OfficialsPage = () => {
 
       setLoading(true);
       try {
-        const res = await instance.get(
-          `${baseURL}/api/officials/levels/${
+        const res = await axios.get(
+          `api/officials/levels/${
             levels[activeTab.toLowerCase()]
           }?page=1&limit=40` // Use the full URL
         );
