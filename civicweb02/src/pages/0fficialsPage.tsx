@@ -29,6 +29,7 @@ const OfficialsPage = () => {
       try {
         const res = await axios.get("/api/levels");
         console.log(res);
+        console.log("what is the response?");
         const levelMap: Record<string, string> = {};
         res.data.levels.forEach((lvl: { level: string; _id: string }) => {
           levelMap[lvl.level.toLowerCase()] = lvl._id;
