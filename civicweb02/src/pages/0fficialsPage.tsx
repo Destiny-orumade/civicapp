@@ -23,13 +23,14 @@ const OfficialsPage = () => {
   const [levels, setLevels] = useState<Record<string, string>>({});
   const navigate = useNavigate();
 
+  const baseURL = import.meta.env.VITE_BASE_URL; // Access the environment variable
+
   // Fetch levels once on mount
   useEffect(() => {
     const fetchLevels = async () => {
       try {
-        const res = await axios.get("/api/levels");
+        const res = await axios.get(`${baseURL}/api/levels`);
         console.log(res);
-        console.log("what is the response?");
         const levelMap: Record<string, string> = {};
         res.data.levels.forEach((lvl: { level: string; _id: string }) => {
           levelMap[lvl.level.toLowerCase()] = lvl._id;
@@ -51,9 +52,9 @@ const OfficialsPage = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `/api/officials/levels/${
+          `${baseURL}/api/officials/levels/${
             levels[activeTab.toLowerCase()]
-          }?page=1&limit=40`
+          }?page=1&limit=40` // Use the full URL
         );
         setOfficials(res.data.officials);
 
