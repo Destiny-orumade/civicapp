@@ -23,8 +23,6 @@ const OfficialsPage = () => {
   const [levels, setLevels] = useState<Record<string, string>>({});
   const navigate = useNavigate();
 
-  const baseURL = import.meta.env.VITE_BASE_URL; // Access the environment variable
-
   // Fetch levels once on mount
   useEffect(() => {
     const fetchLevels = async () => {
