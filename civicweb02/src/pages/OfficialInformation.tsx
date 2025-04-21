@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import instance from "../utils/axios";
+import instance from "@/utils/axios";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import Topbar from "../components/dashboard/topbar";
 
