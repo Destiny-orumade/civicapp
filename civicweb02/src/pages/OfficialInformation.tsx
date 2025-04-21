@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // to get the URL parameter
-import axios from "axios"; // For making API requests
+import { useParams } from "react-router-dom";
+import instance from "../utils/axios";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import Topbar from "../components/dashboard/topbar";
 
@@ -20,14 +20,14 @@ interface Official {
 }
 
 const OfficialInformationPage = () => {
-  const { id } = useParams<{ id: string }>(); // Get the ID from the URL
+  const { id } = useParams<{ id: string }>();
   const [official, setOfficial] = useState<Official | null>(null);
 
   useEffect(() => {
     const fetchOfficial = async () => {
       try {
-        const response = await axios.get(`/api/officials/${id}`);
-        setOfficial(response.data.official); // Assuming the API response has `official` object
+        const response = await instance.get(`/api/officials/${id}`);
+        setOfficial(response.data.official);
         console.log(response.data.official);
       } catch (error) {
         console.error("Error fetching official details:", error);
@@ -38,7 +38,7 @@ const OfficialInformationPage = () => {
   }, [id]);
 
   if (!official) {
-    return <div>Loading...</div>; // Loading state until data is fetched
+    return <div>Loading...</div>;
   }
 
   return (

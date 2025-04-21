@@ -52,7 +52,7 @@ const OfficialsPage = () => {
         const res = await instance.get(
           `/api/officials/levels/${
             levels[activeTab.toLowerCase()]
-          }?page=1&limit=40` // Use the full URL
+          }?page=1&limit=40`
         );
         setOfficials(res.data.officials);
 
